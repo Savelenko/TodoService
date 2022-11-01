@@ -41,15 +41,15 @@ type TodoId =
     static member TryCreate(guid: string) =
         guid |> Guid.TryParse |> Result.ofTryParse guid |> Result.map TodoId
 
-(* Not the absence of `Guid.NewGuid()` for `TodoId`. *)
+(* Note the absence of `Guid.NewGuid()` for `TodoId`. *)
 
 type Todo =
     {
         Id: TodoId
         Title: String255
-        Description: String255 option
+        Description: Option<String255>
         CreatedDate: DateTime
-        CompletedDate: DateTime option
+        CompletedDate: Option<DateTime>
     }
 
     static member TryCreate(id, title, description, createdOn) = validation {

@@ -6,8 +6,8 @@ module GetAllTodos =
     
     type IDataAccess =
 
-        abstract member LoadAllTodos : Async<List<Todo>>
+        abstract member LoadAllTodoItems : Async<List<Todo>>
 
     let getAllTodos (dataAccess : IDataAccess) =
         // Just a pass-through to the DAL
-        dataAccess.LoadAllTodos
+        dataAccess.LoadAllTodoItems
