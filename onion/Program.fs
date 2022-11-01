@@ -1,4 +1,6 @@
-﻿open System
+﻿(* The most outer layer of the application. In this case a console program. *)
+
+open System
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.AspNetCore.Builder
 open Giraffe
@@ -8,10 +10,13 @@ open Microsoft.AspNetCore.Authentication.Cookies
 open Microsoft.Extensions.Configuration
 open Microsoft.AspNetCore.Hosting
 
+(* All layers are visible here. Normally the model layer should not be needed though. *)
+
 open Application
 open DataAccess
 
-// Normally the connection string would be in the configuration settings file
+(* Normally the DB connection string would be in the configuration settings file. *)
+
 let database = ConnectionString "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Todo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
 
 /// Assembles the ASP.NET "application" from various framework modules.
@@ -39,6 +44,7 @@ let private configureServices (services: IServiceCollection) =
         .AddGiraffe()
         |> ignore
 
+/// Go go go!
 [<EntryPoint>]
 let main argv =
     try

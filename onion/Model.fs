@@ -1,4 +1,7 @@
-﻿module Model
+﻿/// A simple model for TODO items. Mostly copied from the original example.
+module Model
+
+(* There are no dependencies on "technical" modules or libraries. Not on Giraffe, JSON serialization, DB access, etc. *)
 
 open System
 open FsToolkit.ErrorHandling
@@ -41,7 +44,7 @@ type TodoId =
     static member TryCreate(guid: string) =
         guid |> Guid.TryParse |> Result.ofTryParse guid |> Result.map TodoId
 
-(* Note the absence of `Guid.NewGuid()` for `TodoId`. *)
+(* Note the absence of `Guid.NewGuid()` for `TodoId` and similar operations which rely on side-effects. *)
 
 type Todo =
     {

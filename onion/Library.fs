@@ -1,4 +1,5 @@
-﻿[<AutoOpen>]
+﻿/// A mini standard library.
+[<AutoOpen>]
 module Library
 
 [<RequireQualifiedAccess>]
